@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+html{
+  color: #000;
+  background-color: #E5E4E2	;
+}
+
+.container {
+  margin: 150px 400px;
+}
+
+.home_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  
+}
+
+.main h1{
+  margin: 0 100px;
+  text-align: center;
+}
+
+.active {
+  color: var(#7393B3);
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.241);
+  margin: 50px auto;
+}
+
+.content-table thead tr {
+  background-color: #36454F;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+td, th {
+  text-align: center;
+}
+
+.searchbar{
+  margin: 40px 0;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.searchbar__input {
+  width: 350px;
+  padding: 15px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.searchbar__input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.nav_btn {
+  cursor: pointer;
+  padding: 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(#fff);
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+@media only screen and (max-width: 1440px){
+  .container {
+    margin: 150px auto;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .nav_btn{
+    visibility: visible;
+    opacity: 1;
+  }
+  .toggled {
+    background: #36454F;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #fff;
+    transition: 1s;
+    transform: translateY(-100vh);
+  }
+  .nottogled{
+    transform: none;
+  }
+
+}
