@@ -9,24 +9,28 @@
 }
 html{
   color: #000;
-  background-color: #E5E4E2	;
+  background-color: #e6e6e6;
 }
+  
 
 .container {
   margin: 150px 400px;
 }
 
-.home_page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh;
-  
-}
-
 .main h1{
-  margin: 0 100px;
+  margin: 20px;
   text-align: center;
+  color: #3a3a3a;
+}
+.main h2{
+  margin: 20px;
+  font-size: large;
+  font-weight: 400;
+  text-align: center;
+  color: #3a3a3a;
+}
+.main-pg{
+  margin-top: 40%;
 }
 
 .active {
@@ -40,13 +44,13 @@ html{
   min-width: 400px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.241);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.241);
   margin: 50px auto;
 }
 
 .content-table thead tr {
-  background-color: #36454F;
-  color: #ffffff;
+  background-color: #5c16c4;
+  color: #fff;
   text-align: left;
   font-weight: bold;
 }

@@ -25,14 +25,13 @@ export default function TrainSearch() {
         } else {
             const filterRes = searchData.filter(item => 
                 item.trainName.toLowerCase().includes(e.target.value.toLowerCase()) || 
-                item.date.toLowerCase().includes(e.target.value.toLowerCase()) ||
-                item.isTrainingFinished.toLowerCase().includes(e.target.value.toLowerCase()) 
+                item.formattedDate.toLowerCase().includes(e.target.value.toLowerCase()) 
                 )
                 if (filterRes.length > 0){
                     setData(filterRes);
                 }
                 else {
-                    setData([{"trainName":"No Data Found"}])
+                    setData([])
                 }
 
             
@@ -61,7 +60,7 @@ export default function TrainSearch() {
                                     <tr key={item.trainId}>
                                         <td>{item.trainId}</td>
                                         <td>{item.trainName}</td>
-                                        <td>{item.date}</td>
+                                        <td>{item.formattedDate}</td>
                                         <td>{item.isTrainingFinished.toString()}</td>
                                         <td>{item.userId}</td>
                                     </tr>
