@@ -16,6 +16,7 @@ export const Nav = styled.nav`
     width: 100vw;
     background: #5c16c4;	
     transition: background 0.45s;
+    z-index: 999;
 
 
     @media screen and (max-width: 768px){
