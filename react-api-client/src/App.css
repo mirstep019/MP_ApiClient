@@ -90,11 +90,29 @@ td, th {
   border-radius: 5px;
   font-size: 17px;
 }
-.searchbar__input:focus-visible {
+.searchbar__input:focus-visible, .searchbar__select:focus-visible {
   border: none;
   outline: none;
 }
-
+.inputbar__input{
+  width: 350px;
+  padding: 15px;
+  height: 45px;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+}
+.inputbar__select, .inputbar__select option{
+  width: 350px;
+  padding: 15px;
+  height: 58px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  outline: none;
+}
 .inputbar{
   margin: 15px 0;
   display: flex;
@@ -149,7 +167,24 @@ td, th {
   font-size: 17px;
   width: 150px;
 }
-.add-btn:hover{
+.add-btn-long{
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 16px;
+  margin: 0.5rem 2rem;
+  color: #5c16c4;
+  border: 2px solid #5c16c4;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  width: 260px;
+}
+.add-btn:hover, .add-btn-long:hover{
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   background: #5c16c4;

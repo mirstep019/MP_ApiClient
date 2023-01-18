@@ -43,20 +43,24 @@ function ExeInTrainPostMethod() {
   
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>Select Training:</label>
-        <select value={selectedTraining} onChange={e => setSelectedTraining(e.target.value)}>
+      <form className='form-post' onSubmit={handleSubmit}>
+        <div className='inputbar'>
+          <label>Select Training:</label>
+          <select className='inputbar__select' value={selectedTraining} onChange={e => setSelectedTraining(e.target.value)}>
           {trainData.map(item => (
-            <option key={item.trainId} value={item.trainId}>{item.trainName}</option>
+            <option className='inputbar__select' key={item.trainId} value={item.trainId}>Id: {item.trainId}, {item.trainName}, UserId: {item.userId}</option>
           ))}
-        </select>
-        <label>Select Exercise:</label>
-        <select value={selectedExercise} onChange={e => setSelectedExercise(e.target.value)}>
+          </select>
+        </div>
+        <div className='inputbar'>
+          <label>Select Exercise:</label>
+          <select className='inputbar__select' value={selectedExercise} onChange={e => setSelectedExercise(e.target.value)}>
           {exeData.map(item => (
-            <option key={item.exeId} value={item.exeId}>{item.exeName}</option>
+            <option className='inputbar__select' key={item.exeId} value={item.exeId}>{item.exeName}</option>
           ))}
-        </select>
-        <button type="submit">Assign Exercise</button>
+          </select>
+        </div>
+        <button className='add-btn-long' type="submit">Add Exercise to the Training</button>
       </form>
     </div>
   )
