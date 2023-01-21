@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { Nav, Bars, NavBtnLink, NavBtn, NavMenu, NavLink} from './NavbarElements'
+import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink} from './NavbarElements'
 
 const Navbar = () => {
-
   return (
     <>
       <Nav>
@@ -13,8 +11,8 @@ const Navbar = () => {
           <NavMenu>
               <NavLink to="/" className={({ isActive }) => isActive?'active' : ''}>Home</NavLink>
               <NavLink to="/exercises" className={({ isActive }) => isActive?'active' : ''}>Exercises</NavLink>
-              <NavLink to="/trainings" className={({ isActive }) => isActive?'active' : ''}>Trainings</NavLink>
-              <NavLink to="/users" className={({ isActive }) => isActive?'active' : ''}>Users</NavLink>
+              <NavLink to="/trainings" className={({ isActive }) => isActive?'active' : ''}>My Trainings</NavLink>
+              <NavLink to="/users" className={({ isActive }) => isActive?'active' : ''}>My Users</NavLink>
               <NavBtn> 
                 <NavBtnLink to="/adding">+</NavBtnLink>
               </NavBtn>

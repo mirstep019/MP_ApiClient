@@ -1,14 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
-import { NavBtn } from '../navbar/NavbarElements';
+
 function UserPostMethod() {
     
     const [data, setData] = useState({
+      trainerId: '',
       userName: '',
       password: ''
     })
     const [error, setError] = useState({
+      trainerId: '',
       userName: '',
       password: ''
     })
@@ -22,19 +24,22 @@ function UserPostMethod() {
     
     function handleSubmit(e) {
       e.preventDefault();
-      if (!data.userName || !data.password) {
+      if (!data.userName || !data.password || !data.trainerId) {
           setError({
+              trainerId: !data.trainerId ? 'This field is required': '',
               userName: !data.userName ? 'This field is required' : '',
               password: !data.password ? 'This field is required' : ''
           });
       } else {
-          axios.post('https://localhost:7271/api/User', {userName: data.userName, password: data.password}).then(response => {
+          axios.post('https://localhost:7271/api/User', {trainerId: data.trainerId ,userName: data.userName, password: data.password}).then(response => {
               console.log(response.data);
               setError({
+                trainerId: '',
                   userName: '',
                   password: ''
               });
               setData({
+                trainerId: '',
                 userName: '',
                 password: ''
               });
@@ -47,6 +52,11 @@ function UserPostMethod() {
     <div className='formule'>
       <h1>New User</h1>
       <form onSubmit={(e) => handleSubmit(e)} className='form-post'>
+      <div className='inputbar'>
+            <label className='form-label'>Trainer Id:</label>
+            {error.trainerId && <span style={{color: 'red'}}>{error.trainerId}</span>}
+            <input className='inputbar__input' type="text" name="trainerId" id="trainerId" value={data.trainerId} onChange={(e) =>handleChange(e)} />
+        </div>
         <div className='inputbar'>
             <label className='form-label'>User Name:</label>
             {error.userName && <span style={{color: 'red'}}>{error.userName}</span>}

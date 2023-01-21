@@ -4,7 +4,7 @@ import UserSearch from '../components/tables/tableuser'
 function Users() {
   return (
     <div className='main'>
-      <h1>Users</h1>
+      <h1>My Users</h1>
       <UserSearch/>
     </div>
   )
