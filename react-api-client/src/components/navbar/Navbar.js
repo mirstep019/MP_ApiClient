@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink} from './NavbarElements'
 
 const Navbar = () => {
@@ -15,6 +15,12 @@ const Navbar = () => {
               <NavLink to="/users" className={({ isActive }) => isActive?'active' : ''}>My Users</NavLink>
               <NavBtn> 
                 <NavBtnLink to="/adding">+</NavBtnLink>
+              </NavBtn>
+              <NavBtn> 
+                <NavBtnLink to="/register">Registration</NavBtnLink>
+              </NavBtn>
+              <NavBtn> 
+                <NavBtnLink to="/login">Login</NavBtnLink>
               </NavBtn>
           </NavMenu>
       </Nav>

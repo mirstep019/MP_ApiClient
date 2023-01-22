@@ -7,6 +7,7 @@ import Trainings from './Pages/Trainings';
 import Exercises from './Pages/Exercises';
 import Add from './Pages/Add';
 import Users from './Pages/Users';
+import Register from './Pages/Registration';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
         <Route path='/exercises' element={<Exercises/>}/>
         <Route path='/trainings' element={<Trainings/>}/>
         <Route path='/users' element={<Users/>}/>
+        <Route path='/adding' element={<Add/>}/>
+        <Route path='/register' element={<Register/>}/>
         <Route path='/adding' element={<Add/>}/>
       </Routes>
 
