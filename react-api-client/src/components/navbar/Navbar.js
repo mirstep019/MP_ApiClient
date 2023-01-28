@@ -1,7 +1,22 @@
 import React from 'react'
 import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink} from './NavbarElements'
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setIsAuthenticated(false);
+  }
+
   return (
     <>
       <Nav>
@@ -16,16 +31,19 @@ const Navbar = () => {
               <NavBtn> 
                 <NavBtnLink to="/adding">+</NavBtnLink>
               </NavBtn>
-              <NavBtn> 
+              {!isAuthenticated && <NavBtn> 
                 <NavBtnLink to="/register">Registration</NavBtnLink>
-              </NavBtn>
-              <NavBtn> 
+              </NavBtn>}
+              {!isAuthenticated && <NavBtn> 
                 <NavBtnLink to="/login">Login</NavBtnLink>
-              </NavBtn>
+              </NavBtn>}
+              {isAuthenticated && <NavBtn onClick={handleLogout}> 
+                <NavBtnLink to="/">Logout</NavBtnLink>
+              </NavBtn>}
           </NavMenu>
       </Nav>
     </>
   )
 }
 
-export default Navbar
+export default Navbar;
