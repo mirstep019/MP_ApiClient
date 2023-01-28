@@ -8,6 +8,7 @@ import Exercises from './Pages/Exercises';
 import Add from './Pages/Add';
 import Users from './Pages/Users';
 import Register from './Pages/Registration';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/users' element={<Users/>}/>
         <Route path='/adding' element={<Add/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/adding' element={<Add/>}/>
       </Routes>
 

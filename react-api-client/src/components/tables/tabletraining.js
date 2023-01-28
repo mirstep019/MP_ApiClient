@@ -20,7 +20,7 @@ export default function TrainSearch() {
         getData();
     }, [])
     const filtering = (e) => {
-        if (e.target.value == ''){
+        if (e.target.value === ''){
             setData(searchData)
         } else {
             const filterRes = searchData.filter(item => 

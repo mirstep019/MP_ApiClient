@@ -21,7 +21,7 @@ export default function UserSearch() {
     }, [])
     const filtering = (e) => {
         if (!searchData) return;
-        if (e.target.value == '') {
+        if (e.target.value === '') {
           setData(searchData)
         } else {
           const filterRes = searchData.filter((item) => 
