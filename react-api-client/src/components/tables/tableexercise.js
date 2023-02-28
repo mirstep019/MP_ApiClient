@@ -1,21 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function ExeSearch() {
 
     const [data, setData] = useState([]);
     const [searchData, setSearchData] = useState([]);
-    const [filterVal, setFilterVal] = useState('')
+    const [filterVal, setFilterVal] = useState('');
+    const navigate = useNavigate();
+
+    const redirectToEntity = (item) => {
+        navigate(`/Exercise/${item.id}`);
+      }
+
 
     useEffect(() => {
         const getData=()=> {
             axios.get('https://localhost:7271/api/Exercise')
-            .then((response)=> {
-                console.log(response);
-                setData(response.data);
-                setSearchData(response.data);
-            })
-            
+            .then((response) => {
+            const modifiedData = response.data.map(item => ({...item, id: item.exeId}));
+            setData(modifiedData);
+            setSearchData(modifiedData);
+            })  
         }
         getData();
     }, [])
@@ -59,6 +65,9 @@ export default function ExeSearch() {
                                         <td>{item.exeId}</td>
                                         <td>{item.exeName}</td>
                                         <td>{item.instructions}</td>
+                                        <td>
+                                            <button onClick={() => redirectToEntity(item)}>View</button>
+                                        </td>
                                     </tr>
                                 )
                             })

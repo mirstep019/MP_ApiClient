@@ -10,7 +10,7 @@ const Navbar = () => {
     if (jwt) {
       setIsAuthenticated(true);
     }
-  }, []);
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     localStorage.removeItem("jwt");
@@ -21,7 +21,7 @@ const Navbar = () => {
     <>
       <Nav>
           <NavLink to="/">
-           <h1>Training Diary API </h1>
+           <h1>Training Diary Coach</h1>
           </NavLink>
           <NavMenu>
               <NavLink to="/" className={({ isActive }) => isActive?'active' : ''}>Home</NavLink>

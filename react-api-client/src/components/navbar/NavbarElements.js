@@ -41,8 +41,6 @@ export const NavLink = styled(Link)`
         color: #fff;
         font-weight: 600;
     }
-    
-
 `
 
 export const Bars = styled(FaBars)`

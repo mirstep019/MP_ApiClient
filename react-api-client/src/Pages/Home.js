@@ -9,7 +9,6 @@ function Home() {
         <h2><strong>Enjoy.</strong></h2>
       </div>
     </div>
-    
   )
 }
 
