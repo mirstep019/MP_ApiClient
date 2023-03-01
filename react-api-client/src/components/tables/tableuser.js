@@ -1,24 +1,30 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../Providers/AppProvider";
 
 export default function UserSearch() {
-
     const [data, setData] = useState([]);
     const [searchData, setSearchData] = useState([]);
-    const [filterVal, setFilterVal] = useState('')
+    const [filterVal, setFilterVal] = useState('');
+    const [store, dispatch] = useContext(Context);
 
     useEffect(() => {
-        const getData=()=> {
-            axios.get('https://localhost:7271/api/User')
-            .then((response)=> {
-                console.log(response);
-                setData(response.data);
-                setSearchData(response.data);
-            })
-            
+        const getData = () => {
+            // Get the current trainer's ID from the authenticated user            
+            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users`)
+  .then((response) => {
+    console.log(response);
+    setData(response.data);
+    setSearchData(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
         }
         getData();
-    }, [])
+    }, [store.trainer.trainerId])
+    
     const filtering = (e) => {
         if (!searchData) return;
         if (e.target.value === '') {
@@ -44,7 +50,6 @@ export default function UserSearch() {
         };
       });
 
-    
     return (
         <div>
             <div className="searchbar">
@@ -75,6 +80,3 @@ export default function UserSearch() {
             </div>
     )
 }
-
-
-

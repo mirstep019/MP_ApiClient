@@ -10,7 +10,7 @@ export default function ExeSearch() {
     const navigate = useNavigate();
 
     const redirectToEntity = (item) => {
-        navigate(`/Exercise/${item.id}`);
+        navigate(`/exercise/${item.id}`);
       }
 
 
@@ -55,6 +55,7 @@ export default function ExeSearch() {
                         <th>Id</th>
                         <th>Exercise Name</th>
                         <th>Instructions</th>
+                        <th>More</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -65,9 +66,7 @@ export default function ExeSearch() {
                                         <td>{item.exeId}</td>
                                         <td>{item.exeName}</td>
                                         <td>{item.instructions}</td>
-                                        <td>
-                                            <button onClick={() => redirectToEntity(item)}>View</button>
-                                        </td>
+                                        <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
                                     </tr>
                                 )
                             })

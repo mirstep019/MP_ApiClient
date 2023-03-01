@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Context } from '../Providers/AppProvider';
 import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink } from './NavbarElements';
-import { useEffect, useState } from 'react';
+export default function Navbar() {
+  // const [token, setToken] = useState(localStorage.getItem("token"));
+  const [store, dispatch] = useContext(Context);
+  // window.addEventListener("storage",(e) => {
+  //   setToken(localStorage.getItem("token"));
+  // });
 
-export default function Navbar()  {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // useEffect(() => {
+  //   const hu = localStorage.getItem("token"); 
+  //   hu ? setToken(hu) : setToken(undefined)
+  // }, [store.token]);
 
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    setIsAuthenticated(!!jwt);
-  }, [isAuthenticated]);
-
-  const handleLogout = () => {
-    localStorage.removeItem('jwt');
-    setIsAuthenticated(false);
+  const logout = () => {
+    dispatch({type: "CLEAR"});
   };
 
   return (
     <Nav>
       <NavLink to="/">
-        <h1>Training Diary API</h1>
+        {store.trainer.token ? (<h1>Hello {store.trainer.trainerName}! </h1>): (<h1>Training Diary Coach </h1>) }
+          {store.trainer.token ? (<p>Your id: {store.trainer.trainerId}</p>): (null)}
       </NavLink>
       <NavMenu>
         <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
@@ -36,7 +39,7 @@ export default function Navbar()  {
         <NavBtn>
           <NavBtnLink to="/adding">+</NavBtnLink>
         </NavBtn>
-        {!isAuthenticated && (
+        {!store.trainer.token ? (
           <>
             <NavBtn>
               <NavBtnLink to="/register">Registration</NavBtnLink>
@@ -45,11 +48,10 @@ export default function Navbar()  {
               <NavBtnLink to="/login">Login</NavBtnLink>
             </NavBtn>
           </>
-        )}
-        {isAuthenticated && (
+        ): (
           <>
-            <NavBtn onClick={handleLogout}>
-            <NavBtnLink to="/">Logout</NavBtnLink>
+            <NavBtn onClick={logout}>
+              <NavBtnLink to="/">Logout</NavBtnLink>
             </NavBtn>
           </>
         )}

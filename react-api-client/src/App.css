@@ -167,6 +167,25 @@ td, th {
   font-size: 17px;
   width: 150px;
 }
+.add-btn2{
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px 10px;
+  color: #5c16c4;
+  border: 2px solid #5c16c4;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 15px;
+  width: 110px;
+}
+
+.center{
+  text-align: center;
+}
+
 .add-btn-long{
   border-radius: 10px;
   background: #fff;
@@ -184,7 +203,7 @@ td, th {
   font-size: 16px;
   width: 260px;
 }
-.add-btn:hover, .add-btn-long:hover{
+.add-btn:hover, .add-btn-long:hover, .add-btn2:hover{
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
   background: #5c16c4;

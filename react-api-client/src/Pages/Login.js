@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { Context } from "../components/Providers/AppProvider";
 
 export default function Login() {
-
+    const[store, dispatch] = useContext(Context);
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState({
         email: '',
@@ -11,7 +12,7 @@ export default function Login() {
     })
     const [error, setError] = useState({
         email: '',
-        password: ''
+        password: '',
     })
 
     const navigate = useNavigate();
@@ -35,8 +36,11 @@ export default function Login() {
         } else {
             axios.get('https://localhost:7271/login?email=' + data.email + '&password=' + data.password)
                 .then((response) => {
-                    console.log(response.data);
-                    localStorage.setItem('jwt', response.data.jwt);
+                    // console.log(response.data);
+                    // localStorage.setItem("token", response.data.value);
+                    // dispatch({type: "SETTOKEN", payload: response.data.value});
+                    dispatch({type: "SETTRAINER", payload: response.data})
+                    console.log(store.trainer);
                     setError({
                         email: '',
                         password: ''
