@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { Context } from "../Providers/AppProvider";
 
 export default function ExeSearch() {
 
@@ -9,6 +10,8 @@ export default function ExeSearch() {
     const [filterVal, setFilterVal] = useState('');
     const navigate = useNavigate();
 
+    const [store] = useContext(Context);
+
     const redirectToEntity = (item) => {
         navigate(`/exercise/${item.id}`);
       }
@@ -16,15 +19,20 @@ export default function ExeSearch() {
 
     useEffect(() => {
         const getData=()=> {
-            axios.get('https://localhost:7271/api/Exercise')
+            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises`)
             .then((response) => {
             const modifiedData = response.data.map(item => ({...item, id: item.exeId}));
             setData(modifiedData);
             setSearchData(modifiedData);
-            })  
+            })
+            .catch((error) => {
+                console.log(error);
+           });
         }
         getData();
-    }, [])
+    }, [store.trainer.trainerId])
+
+    
     const filtering = (e) => {
         if (e.target.value === ''){
             setData(searchData)

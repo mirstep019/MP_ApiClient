@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Context } from '../Providers/AppProvider';
 import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink } from './NavbarElements';
+
 export default function Navbar() {
   // const [token, setToken] = useState(localStorage.getItem("token"));
   const [store, dispatch] = useContext(Context);

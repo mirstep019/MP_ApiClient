@@ -1,24 +1,32 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../Providers/AppProvider";
 
 export default function TrainSearch() {
 
     const [data, setData] = useState([]);
     const [searchData, setSearchData] = useState([]);
-    const [filterVal, setFilterVal] = useState('')
+    const [filterVal, setFilterVal] = useState('');
+
+    const [store] = useContext(Context);
 
     useEffect(() => {
-        const getData=()=> {
-            axios.get('https://localhost:7271/api/Training')
-            .then((response)=> {
-                console.log(response);
-                setData(response.data);
-                setSearchData(response.data);
-            })
-            
-        }
-        getData();
-    }, [])
+        const getData = () => {
+            // Get the current trainer's ID from the authenticated user            
+            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
+            .then((response) => {
+            console.log(response);
+            setData(response.data);
+            setSearchData(response.data);
+          })
+          .catch((error) => {
+          console.log(error);
+        });
+      }
+      getData();
+    }, [store.trainer.trainerId])
+
+
     const filtering = (e) => {
         if (e.target.value === ''){
             setData(searchData)

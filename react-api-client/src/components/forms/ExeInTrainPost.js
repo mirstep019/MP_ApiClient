@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Context } from '../Providers/AppProvider';
 
 function ExeInTrainPostMethod() {
   const [trainData, setTrainData] = useState([]);
@@ -7,25 +8,27 @@ function ExeInTrainPostMethod() {
   const [exeData, setExeData] = useState([]);
   const [selectedExercise, setSelectedExercise] = useState('');
 
+  const [store] = useContext(Context);
+
   useEffect(() => {
-    axios.get('https://localhost:7271/api/Training')
+    axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
       .then(response => {
         setTrainData(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [store.trainer.trainerId]);
 
   useEffect(() => {
-    axios.get('https://localhost:7271/api/Exercise')
+    axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises`)
       .then(response => {
         setExeData(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [store.trainer.trainerId]);
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -6,23 +6,22 @@ export default function UserSearch() {
     const [data, setData] = useState([]);
     const [searchData, setSearchData] = useState([]);
     const [filterVal, setFilterVal] = useState('');
-    const [store, dispatch] = useContext(Context);
+    const [store] = useContext(Context);
 
     useEffect(() => {
         const getData = () => {
             // Get the current trainer's ID from the authenticated user            
             axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users`)
-  .then((response) => {
-    console.log(response);
-    setData(response.data);
-    setSearchData(response.data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-
-        }
-        getData();
+            .then((response) => {
+            console.log(response);
+            setData(response.data);
+            setSearchData(response.data);
+          })
+          .catch((error) => {
+          console.log(error);
+        });
+      }
+      getData();
     }, [store.trainer.trainerId])
     
     const filtering = (e) => {
