@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Context } from '../Providers/AppProvider';
 import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink } from './NavbarElements';
 
@@ -32,10 +32,10 @@ export default function Navbar() {
           Exercises
         </NavLink>
         <NavLink to="/trainings" className={({ isActive }) => (isActive ? 'active' : '')}>
-          My Trainings
+          Trainings
         </NavLink>
         <NavLink to="/users" className={({ isActive }) => (isActive ? 'active' : '')}>
-          My Users
+          Users
         </NavLink>
         <NavBtn>
           <NavBtnLink to="/adding">+</NavBtnLink>

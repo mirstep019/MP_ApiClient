@@ -4,7 +4,7 @@ import ExeSearch from '../components/tables/tableexercise'
 function Exercises() {
   return (
     <div className='main'>
-      <h1>Exercises in App</h1>
+      <h1>My Exercises</h1>
       <ExeSearch/>
     </div>
   )

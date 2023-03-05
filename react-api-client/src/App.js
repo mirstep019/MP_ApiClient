@@ -11,6 +11,9 @@ import Register from './Pages/Registration';
 import Login from './Pages/Login';
 import EditExercise from './components/Entity/EntityExe';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
+import EditTraining from './components/Entity/EntityTrain';
+
+
 function App() {
   return (
     <div className='container'>
@@ -21,11 +24,13 @@ function App() {
           <Route path="/exercises" element={<Exercises/>} />
           <Route path="/trainings" element={<Trainings/>} />
           <Route path="/users" element={<Users/>} />
-          <Route path="/adding" element={<Add/>} />
+          <Route path="/adding" element={<Add/>} /> 
+          <Route path='/exercise/:exeId' element={<EditExercise/>}/>
+          <Route path='/training/:trainId' element={<EditTraining/>} />
         </Route>
         <Route path='/register' element={<Register/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/exercise/:exeId' element={<EditExercise/>}/>
+        
       </Routes>
     </div>
   );

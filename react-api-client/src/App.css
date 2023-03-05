@@ -186,6 +186,13 @@ td, th {
   text-align: center;
 }
 
+.back-btn{
+  font-size: 20px;
+  text-decoration: none;
+  color: #5c16c4;
+  font-weight: 500;
+}
+
 .add-btn-long{
   border-radius: 10px;
   background: #fff;
