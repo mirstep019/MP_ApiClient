@@ -40,7 +40,8 @@ export default function Login() {
                     // localStorage.setItem("token", response.data.value);
                     // dispatch({type: "SETTOKEN", payload: response.data.value});
                     dispatch({type: "SETTRAINER", payload: response.data})
-                    console.log(store.trainer);
+                    dispatch({type: "SETUSER", payload: response.data.userIds})
+                
                     setError({
                         email: '',
                         password: ''
@@ -49,7 +50,7 @@ export default function Login() {
                         email: '',
                         password: '',
                     });
-                    navigate("/exercises");
+                    navigate(`/home`);
                     setIsLoading(false);
                 })
                 .catch((error) => {
@@ -57,7 +58,10 @@ export default function Login() {
                     setIsLoading(false);
                 });
                 //window.location.reload();
+                
         }
+        console.log(store.userIds);
+        console.log(store.trainer);
     }
     return (
         <div className='formule main'>

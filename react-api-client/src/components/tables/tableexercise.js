@@ -13,7 +13,7 @@ export default function ExeSearch() {
     const [store] = useContext(Context);
 
     const redirectToEntity = (item) => {
-        navigate(`/exercise/${item.id}`);
+        navigate(`/Trainers/${store.trainer.trainerId}/Exercises/${item.exeId}`);
       }
 
 

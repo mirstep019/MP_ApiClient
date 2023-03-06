@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import {  useNavigate } from "react-router";
 import { Context } from "../Providers/AppProvider";
 
 export default function UserSearch() {
@@ -40,6 +41,11 @@ export default function UserSearch() {
         }
         setFilterVal(e.target.value)
     }
+    const navigate = useNavigate();
+    const redirectToEntity = (item) => {
+      navigate(`/Trainers/${store.trainer.trainerId}/Users/${item.userId}`);
+    }
+
 
     const userData = data.map(item => {
         return {
@@ -60,6 +66,7 @@ export default function UserSearch() {
                         <th>User Id</th>
                         <th>Username</th>
                         <th>Trainings Count</th>
+                        <th>More</th>
                     </tr>
                 </thead>
                     <tbody>
@@ -70,6 +77,7 @@ export default function UserSearch() {
                                         <td>{item.userId}</td>
                                         <td>{item.userName}</td>
                                         <td>{item.numTrainings}</td>
+                                        <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
                                     </tr>
                                 )
                             })

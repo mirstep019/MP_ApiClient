@@ -15,7 +15,7 @@ export default function TrainSearch() {
 
 
     const redirectToEntity = (item) => {
-        navigate(`/training/${item.id}`);
+        navigate(`/Trainers/${store.trainer.trainerId}/Users/${item.userId}/Trainings/${item.trainId}`);
     }
 
     useEffect(() => {

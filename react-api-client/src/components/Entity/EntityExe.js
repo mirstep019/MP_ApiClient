@@ -1,19 +1,21 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
+import { Context } from "../Providers/AppProvider";
 
 export default function EditExercise() {
   const { exeId } = useParams(); // get the exercise ID from the URL parameter
   const navigate = useNavigate();
   const [exeName, setExeName] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [store] = useContext(Context);
 
   
 
   useEffect(() => {
     axios
-      .get(`https://localhost:7271/api/Exercise/${exeId}`)
+      .get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`)
       .then((response) => {
         // console.log(response.data)
         setExeName(response.data.exeName)
@@ -22,27 +24,27 @@ export default function EditExercise() {
       .catch((error) => {
         console.log(error);
       });
-  }, [exeId]);
+  }, [exeId, store.trainer.trainerId]);
 
   // update the exercise data
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`https://localhost:7271/api/Exercise/${exeId}`, {
+      .put(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`, {
         exeName: exeName,
         instructions: instructions,
       })
       .then(() => {
-        navigate(`/exercises`);
+        navigate(`/Trainers/${store.trainer.trainerId}/Exercises`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  return (
-    <div className="formule container">
-      <NavLink className="back-btn" to="/exercises">{"< Back"}</NavLink>
+  return (      
+    <div className="formule main">
+      <NavLink className="back-btn" to={`/Trainers/${store.trainer.trainerId}/Exercises`}>{"< Back"}</NavLink>
       <h1 className="center">Edit Exercise</h1>
       <form onSubmit={handleSubmit} className="form-post">
         <div className="inputbar">
