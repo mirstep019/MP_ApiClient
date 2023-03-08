@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import axios from 'axios';
+import { Context } from '../Providers/AppProvider';
 
 function UserPostMethod() {
+
+    const [store] = useContext(Context);
     
     const [data, setData] = useState({
-      trainerId: '',
+      trainerId: store.trainer.trainerId,
       userName: '',
       password: ''
     })
     const [error, setError] = useState({
-      trainerId: '',
       userName: '',
       password: ''
     })
@@ -24,9 +26,8 @@ function UserPostMethod() {
     
     function handleSubmit(e) {
       e.preventDefault();
-      if (!data.userName || !data.password || !data.trainerId) {
+      if (!data.userName || !data.password) {
           setError({
-              trainerId: !data.trainerId ? 'This field is required': '',
               userName: !data.userName ? 'This field is required' : '',
               password: !data.password ? 'This field is required' : ''
           });
@@ -39,7 +40,7 @@ function UserPostMethod() {
                   password: ''
               });
               setData({
-                trainerId: '',
+                trainerId: store.trainer.trainerId,
                 userName: '',
                 password: ''
               });
@@ -53,9 +54,8 @@ function UserPostMethod() {
       <h1>New User</h1>
       <form onSubmit={(e) => handleSubmit(e)} className='form-post'>
       <div className='inputbar'>
-            <label className='form-label'>Trainer Id:</label>
-            {error.trainerId && <span style={{color: 'red'}}>{error.trainerId}</span>}
-            <input className='inputbar__input' type="text" name="trainerId" id="trainerId" value={data.trainerId} onChange={(e) =>handleChange(e)} />
+            <label className='form-label'>Your Id:</label>
+            <input className='inputbar__input' type="text" name="trainerId" id="trainerId" value={data.trainerId} disabled />
         </div>
         <div className='inputbar'>
             <label className='form-label'>User Name:</label>

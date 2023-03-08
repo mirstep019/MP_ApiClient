@@ -19,7 +19,7 @@ export default function EditTraining() {
   });
 
   useEffect(() => {
-    console.log(store.userIds)
+    //console.log(store.userIds)
     axios
       .get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`)
       .then((response) => {

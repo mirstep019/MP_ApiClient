@@ -67,7 +67,7 @@ function TrainingPostMethod() {
             <h1>New Training</h1>
             <form onSubmit={(e) => handleSubmit(e)} className='form-post'>
                 <div className='inputbar'>
-                    <label className='form-label'>User Id:</label>
+                    <label className='form-label'>Your User Id:</label>
                     <input className='inputbar__input' type="text" name="UserId" id="userId" value={data.userId} onChange={(e) =>handleChange(e)} />
                 </div>
                 <div className='inputbar'>

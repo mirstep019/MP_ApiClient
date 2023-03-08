@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { Context } from '../Providers/AppProvider';
 
 function ExercisePost() {
+
+    const [store] = useContext(Context);
+
     const [data, setData] = useState({
+        trainerId: store.trainer.trainerId,
         exeName: '',
         instructions: ''
     });
@@ -25,13 +30,14 @@ function ExercisePost() {
                 instructions: !data.instructions ? 'This field is required' : ''
             });
         } else {
-            axios.post('https://localhost:7271/api/Exercise', {exeName: data.exeName, instructions: data.instructions}).then(response => {
+            axios.post('https://localhost:7271/api/Exercise', {trainerId: data.trainerId, exeName: data.exeName, instructions: data.instructions}).then(response => {
                 console.log(response.data);
                 setError({
                     exeName: '',
                     instructions: ''
                 });
                 setData({
+                    trainerId: store.trainer.trainerId,
                     exeName: '',
                     instructions: ''
                 });
@@ -42,6 +48,10 @@ function ExercisePost() {
         <div className='form-container'>
             <h1>New Exercise</h1>
             <form onSubmit={handleSubmit} className='form-post'>
+                <div className='inputbar'>
+                    <label className='form-label'>Your Id:</label>
+                    <input className='inputbar__input' name="trainerId" id="trainerId" value={data.trainerId} disabled />
+                </div>
                 <div className='inputbar'>
                     <label className='form-label'>Exercise Name:</label>
                     {error.exeName && <span style={{color: 'red'}}>{error.exeName}</span>}
