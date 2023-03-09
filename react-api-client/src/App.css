@@ -181,6 +181,24 @@ td, th {
   font-size: 15px;
   width: 110px;
 }
+.delete-btn{
+  border-radius: 10px;
+  background: #fff;
+  padding: 6px 10px;
+  color: #c42d16;
+  border: 2px solid #c42d16;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  font-weight: 400;
+  width: 47px;
+}
+.delete-btn::after{
+  display: inline-block;
+  content: "\00d7";
+  font-size: 20px;
+}
 
 .center{
   text-align: center;
@@ -215,6 +233,13 @@ td, th {
   transition: all 0.25s ease-in-out;
   background: #5c16c4;
   border: 2px solid #5c16c4;
+  color: #FFF;
+}
+.delete-btn:hover{
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  background: #c42d16;
+  border: 2px solid #c42d16;
   color: #FFF;
 }
 .form-label{

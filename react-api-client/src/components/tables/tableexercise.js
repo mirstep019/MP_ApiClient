@@ -64,6 +64,7 @@ export default function ExeSearch() {
                         <th>Exercise Name</th>
                         <th>Instructions</th>
                         <th>More</th>
+                        <th></th>
                     </tr>
                 </thead>
                     <tbody>
@@ -75,6 +76,7 @@ export default function ExeSearch() {
                                         <td>{item.exeName}</td>
                                         <td>{item.instructions}</td>
                                         <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
+                                        <td><button className="delete-btn"/></td>
                                     </tr>
                                 )
                             })
