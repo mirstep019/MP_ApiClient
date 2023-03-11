@@ -27,7 +27,7 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path="/" element={<PrivateRoutes/>}>
-          <Route path="/" element={<Home/>} />
+          <Route path="/home" element={<Home/>} />
           <Route path={`/Trainers/${store.trainer.trainerId}/Exercises`} element={<Exercises/>} />
           <Route path={`/Trainers/${store.trainer.trainerId}/Trainings`} element={<Trainings/>} />
           <Route path={`/Trainers/${store.trainer.trainerId}/Users`} element={<Users/>} />

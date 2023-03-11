@@ -22,14 +22,12 @@ const dataReducer = (state, action) => {
         }
         
         case SETUSER:{
-            const userIdsTest = [];
-            for (const user of action.payload) {
-              userIdsTest.push(user);
+            if (!Array.isArray(action.payload)) {
+                console.error("SETUSER action payload must be an array.");
+                return state;
             }
-            console.log(userIdsTest);
             return {...state, userIds: [...action.payload]};
-          }
-          
+        }        
         case SETTRAINER:{
             return {...state, trainer: action.payload}
         }

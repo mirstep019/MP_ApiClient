@@ -25,7 +25,7 @@ export default function Navbar() {
           {store.trainer.token ? (<p>Your id: {store.trainer.trainerId}</p>): (null)}
       </NavLink>
       <NavMenu>
-        <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+        <NavLink to="/home" className={({ isActive }) => (isActive ? 'active' : '')}>
           Home
         </NavLink>
         <NavLink to={`/Trainers/${store.trainer.trainerId}/Exercises`} className={({ isActive }) => (isActive ? 'active' : '')}>
