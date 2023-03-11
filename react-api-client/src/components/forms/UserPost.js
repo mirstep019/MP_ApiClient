@@ -32,7 +32,7 @@ function UserPostMethod() {
               password: !data.password ? 'This field is required' : ''
           });
       } else {
-          axios.post('https://localhost:7271/api/User', {trainerId: data.trainerId ,userName: data.userName, password: data.password}).then(response => {
+          axios.post('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/User', {trainerId: data.trainerId ,userName: data.userName, password: data.password}).then(response => {
               console.log(response.data);
               setError({
                 trainerId: '',

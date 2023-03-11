@@ -34,7 +34,7 @@ export default function Login() {
             });
             setIsLoading(false);
         } else {
-            axios.get('https://localhost:7271/login?email=' + data.email + '&password=' + data.password)
+            axios.get('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/login?email=' + data.email + '&password=' + data.password)
                 .then((response) => {
                     // console.log(response.data);
                     // localStorage.setItem("token", response.data.value);

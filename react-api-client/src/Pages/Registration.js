@@ -35,7 +35,7 @@ export default function Register()  {
             });
             setIsLoading(false);
         } else {
-            axios.post('https://localhost:7271/api/Trainer', {trainerName: data.trainerName , email: data.email, password: data.password}).then(response => {
+            axios.post('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainer', {trainerName: data.trainerName , email: data.email, password: data.password}).then(response => {
                 console.log(response.data);
                 setError({
                     trainerName: '',

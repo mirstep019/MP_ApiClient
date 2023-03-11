@@ -16,7 +16,7 @@ export default function EditUser() {
   console.log(userId)
   useEffect(() => {
     axios
-      .get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/${userId}`)
+      .get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}`)
       .then((response) => {
         console.log(response)
         setUserName(response.data.userName)
@@ -31,7 +31,7 @@ export default function EditUser() {
     e.preventDefault();
     console.log('Submitting form...', { userName });
   
-    axios.put(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/${userId}`, {
+    axios.put(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}`, {
       userName: userName,
     })
       .then(() => {

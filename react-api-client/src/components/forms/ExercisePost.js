@@ -30,7 +30,7 @@ function ExercisePost() {
                 instructions: !data.instructions ? 'This field is required' : ''
             });
         } else {
-            axios.post('https://localhost:7271/api/Exercise', {trainerId: data.trainerId, exeName: data.exeName, instructions: data.instructions}).then(response => {
+            axios.post('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Exercise', {trainerId: data.trainerId, exeName: data.exeName, instructions: data.instructions}).then(response => {
                 console.log(response.data);
                 setError({
                     exeName: '',

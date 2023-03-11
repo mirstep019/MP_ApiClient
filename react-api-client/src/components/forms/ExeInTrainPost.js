@@ -11,7 +11,7 @@ function ExeInTrainPostMethod() {
   const [store] = useContext(Context);
 
   useEffect(() => {
-    axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
+    axios.get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
       .then(response => {
         setTrainData(response.data);
       })
@@ -21,7 +21,7 @@ function ExeInTrainPostMethod() {
   }, [store.trainer.trainerId]);
 
   useEffect(() => {
-    axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises`)
+    axios.get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Exercises`)
       .then(response => {
         setExeData(response.data);
       })
@@ -35,7 +35,7 @@ function ExeInTrainPostMethod() {
     if (!selectedTraining || !selectedExercise) {
       alert("Please select a training and an exercise");
       return;}
-      axios.post('https://localhost:7271/api/NewExerciseInTraining?trainingId=' + selectedTraining + '&exerciseId=' + selectedExercise)
+      axios.post('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/NewExerciseInTraining?trainingId=' + selectedTraining + '&exerciseId=' + selectedExercise)
       .then((response) => {
         console.log(response.data);
       })

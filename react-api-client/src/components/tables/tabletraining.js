@@ -21,7 +21,7 @@ export default function TrainSearch() {
     useEffect(() => {
         const getData = () => {
             // Get the current trainer's ID from the authenticated user            
-            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
+            axios.get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/Trainings`)
             .then((response) => {
             const modifiedData = response.data.map(item => ({...item, id: item.trainId}));
             setData(modifiedData);

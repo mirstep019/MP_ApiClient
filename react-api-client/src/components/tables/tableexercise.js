@@ -19,7 +19,7 @@ export default function ExeSearch() {
 
     useEffect(() => {
         const getData=()=> {
-            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises`)
+            axios.get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Exercises`)
             .then((response) => {
             const modifiedData = response.data.map(item => ({...item, id: item.exeId}));
             setData(modifiedData);

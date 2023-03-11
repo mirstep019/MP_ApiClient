@@ -21,7 +21,7 @@ export default function EditTraining() {
   useEffect(() => {
     //console.log(store.userIds)
     axios
-      .get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`)
+      .get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`)
       .then((response) => {
         setData(response.data);
       })
@@ -33,7 +33,7 @@ export default function EditTraining() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`, data)
+      .put(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`, data)
       .then(() => {
         navigate(`/Trainers/${store.trainer.trainerId}/Trainings`);
       })

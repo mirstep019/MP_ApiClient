@@ -12,7 +12,7 @@ export default function UserSearch() {
     useEffect(() => {
         const getData = () => {
             // Get the current trainer's ID from the authenticated user            
-            axios.get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Users`)
+            axios.get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users`)
             .then((response) => {
             console.log(response);
             setData(response.data);

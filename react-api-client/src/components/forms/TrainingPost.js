@@ -39,7 +39,7 @@ function TrainingPostMethod() {
                 formattedDate: !data.formattedDate ? 'This field is required' : ''
             });
         } else {
-            axios.post('https://localhost:7271/api/Training', 
+            axios.post('https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Training', 
                 {userId: data.userId,
                 trainName: data.trainName, 
                 formattedDate: data.formattedDate,

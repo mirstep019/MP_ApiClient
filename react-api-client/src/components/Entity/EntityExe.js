@@ -15,7 +15,7 @@ export default function EditExercise() {
 
   useEffect(() => {
     axios
-      .get(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`)
+      .get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`)
       .then((response) => {
         // console.log(response.data)
         setExeName(response.data.exeName)
@@ -30,7 +30,7 @@ export default function EditExercise() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`https://localhost:7271/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`, {
+      .put(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Exercises/${exeId}`, {
         exeName: exeName,
         instructions: instructions,
       })
