@@ -18,6 +18,24 @@ export default function TrainSearch() {
         navigate(`/Trainers/${store.trainer.trainerId}/Users/${item.userId}/Trainings/${item.trainId}`);
     }
 
+    const deleteTrain = (id) => {
+        axios.delete(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Training/${id}`)
+        .then((response) => {
+            if (Array.isArray(response.data)) { // check if response.data is an array
+                // Refresh the data
+                const modifiedData = response.data.map(item => ({...item, id: item.trainId}));
+                setData(modifiedData);
+                setSearchData(modifiedData);
+            } else {
+                setData([]);
+                setSearchData([]);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
+
     useEffect(() => {
         const getData = () => {
             // Get the current trainer's ID from the authenticated user            
@@ -69,6 +87,7 @@ export default function TrainSearch() {
                         <th>Finished</th>
                         <th>UserId</th>
                         <th>More</th>
+                        <th></th>
                     </tr>
                 </thead>
                     <tbody>
@@ -82,6 +101,7 @@ export default function TrainSearch() {
                                         <td>{item.isTrainingFinished.toString()}</td>
                                         <td>{item.userId}</td>
                                         <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
+                                        <td><button className="delete-btn" onClick={() => deleteTrain(item.trainId)}></button></td>
                                     </tr>
                                 )
                             })

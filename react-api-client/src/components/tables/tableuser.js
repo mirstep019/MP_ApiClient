@@ -42,9 +42,28 @@ export default function UserSearch() {
         setFilterVal(e.target.value)
     }
     const navigate = useNavigate();
+
     const redirectToEntity = (item) => {
       navigate(`/Trainers/${store.trainer.trainerId}/Users/${item.userId}`);
     }
+
+    const deleteUser = (id) => {
+      axios.delete(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/User/${id}`)
+      .then((response) => {
+          if (Array.isArray(response.data)) { // check if response.data is an array
+              // Refresh the data
+              const modifiedData = response.data.map(item => ({...item, id: item.userId}));
+              setData(modifiedData);
+              setSearchData(modifiedData);
+          } else {
+              setData([]);
+              setSearchData([]);
+          }
+      })
+      .catch((error) => {
+          console.log(error);
+      });
+  }
 
 
     const userData = data.map(item => {
@@ -67,6 +86,7 @@ export default function UserSearch() {
                         <th>Username</th>
                         <th>Trainings Count</th>
                         <th>More</th>
+                        <th></th>
                     </tr>
                 </thead>
                     <tbody>
@@ -78,6 +98,7 @@ export default function UserSearch() {
                                         <td>{item.userName}</td>
                                         <td>{item.numTrainings}</td>
                                         <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
+                                        <td><button className="delete-btn" onClick={() => deleteUser(item.userId)}></button></td>
                                     </tr>
                                 )
                             })
