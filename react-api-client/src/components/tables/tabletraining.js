@@ -15,7 +15,7 @@ export default function TrainSearch() {
 
 
     const redirectToEntity = (item) => {
-        navigate(`/Trainers/${store.trainer.trainerId}/Users/${item.userId}/Trainings/${item.trainId}`);
+        navigate(`/Trainers/${store.trainer.trainerId}/Trainings/${item.trainId}`);
     }
 
     const deleteTrain = (id) => {
@@ -98,7 +98,7 @@ export default function TrainSearch() {
                                         <td>{item.trainId}</td>
                                         <td>{item.trainName}</td>
                                         <td>{item.formattedDate}</td>
-                                        <td>{item.isTrainingFinished.toString()}</td>
+                                        <td>{item.isTrainFinished.toString()}</td>
                                         <td>{item.userId}</td>
                                         <td><button className="add-btn2" onClick={() => redirectToEntity(item)}>Update</button></td>
                                         <td><button className="delete-btn" onClick={() => deleteTrain(item.trainId)}></button></td>

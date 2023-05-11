@@ -12,28 +12,32 @@ export default function EditTraining() {
   const navigate = useNavigate();
   const [store] = useContext(Context);
 
+  const [date, setDate] = useState('');
+
+
   const [data, setData] = useState({
     userId: '',
     trainName: '',
-    isTrainingFinished: false
+    isTrainFinished: false
   });
 
   useEffect(() => {
-    //console.log(store.userIds)
     axios
-      .get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`)
+      .get(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Trainings/${trainId}`)
       .then((response) => {
         setData(response.data);
+        setDate(new Date(response.data.formattedDate)); // change this to the name of your custom date property
       })
       .catch((error) => {
         console.log(error);
       });
   }, [store.trainer.trainerId, trainId, userId]);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Users/${userId}/Trainings/${trainId}`, data)
+      .put(`https://xn--treninkovdenkapi-ksb8z.azurewebsites.net/api/Trainers/${store.trainer.trainerId}/Trainings/${trainId}`, data)
       .then(() => {
         navigate(`/Trainers/${store.trainer.trainerId}/Trainings`);
       })
@@ -58,18 +62,19 @@ export default function EditTraining() {
         <div className='inputbar'>
           <label className='form-label'>Date:</label>
           <DatePicker
-            //value={data.formattedDate}
+            selected={date}
             disabled={true}
             className='inputbar__input'
             id='formattedDate'
+            dateFormat="dd MMMM yyyy"
           />
         </div>
         <div className='finished'>
           <h2>Finished Training</h2>
           <input
             type="checkbox"
-            checked={data.isTrainingFinished}
-            onChange={(e) => setData({...data, isTrainingFinished: e.target.checked})}
+            checked={data.isTrainFinished}
+            onChange={(e) => setData({...data, isTrainFinished: e.target.checked})}
             id='isTrainingFinished'
           />
         </div>
