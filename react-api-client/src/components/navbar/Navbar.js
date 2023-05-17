@@ -1,40 +1,56 @@
 import React, { useContext } from 'react';
 import { Context } from '../Providers/AppProvider';
-import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink } from './NavbarElements';
+import { Nav, NavBtnLink, NavBtn, NavMenu, NavLink, Bars } from './NavbarElements';
+import { useState } from 'react';
 
-export default function Navbar() {
-  // const [token, setToken] = useState(localStorage.getItem("token"));
+const Navbar = () => {
   const [store, dispatch] = useContext(Context);
-  // window.addEventListener("storage",(e) => {
-  //   setToken(localStorage.getItem("token"));
-  // });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const hu = localStorage.getItem("token"); 
-  //   hu ? setToken(hu) : setToken(undefined)
-  // }, [store.token]);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const logout = () => {
-    dispatch({type: "CLEAR"});
+    dispatch({ type: 'CLEAR' });
   };
 
   return (
     <Nav>
-      <NavLink to="/">
-        {store.trainer.token ? (<> <h1>Hello {store.trainer.trainerName} &nbsp; </h1></>): (<h1>Training Diary Coach </h1>) }
-          {store.trainer.token ? (<p>Your id: {store.trainer.trainerId}</p>): (null)}
+      <Bars onClick={toggleMenu} />
+      <NavLink to="/home">
+        {store.trainer.token ? (
+          <>
+            <h1>{store.trainer.trainerName} &nbsp;</h1>
+          </>
+        ) : (
+          <h1>Training Diary Coach</h1>
+        )}
+        {store.trainer.token ? <p>Your id: {store.trainer.trainerId}</p> : null}
       </NavLink>
-      <NavMenu>
-        <NavLink to="/home" className={({ isActive }) => (isActive ? 'active' : '')}>
+      <NavMenu isMenuOpen={isMenuOpen}>
+        <NavLink
+          to="/home"
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
           Home
         </NavLink>
-        <NavLink to={`/Trainers/${store.trainer.trainerId}/Exercises`} className={({ isActive }) => (isActive ? 'active' : '')}>
+        <NavLink
+          to={`/Trainers/${store.trainer.trainerId}/Exercises`}
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
           Exercises
         </NavLink>
-        <NavLink to={`Trainers/${store.trainer.trainerId}/Trainings`} className={({ isActive }) => (isActive ? 'active' : '')}>
+        <NavLink
+          to={`Trainers/${store.trainer.trainerId}/Trainings`}
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
           Trainings
         </NavLink>
-        <NavLink to={`Trainers/${store.trainer.trainerId}/Users`} className={({ isActive }) => (isActive ? 'active' : '')}>
+        <NavLink
+          to={`Trainers/${store.trainer.trainerId}/Users`}
+          className={({ isActive }) => (isActive ? 'active' : '')}
+        >
           Users
         </NavLink>
         <NavBtn>
@@ -49,7 +65,7 @@ export default function Navbar() {
               <NavBtnLink to="/Login">Login</NavBtnLink>
             </NavBtn>
           </>
-        ): (
+        ) : (
           <>
             <NavBtn onClick={logout}>
               <NavBtnLink to="/">Logout</NavBtnLink>
@@ -60,3 +76,5 @@ export default function Navbar() {
     </Nav>
   );
 };
+
+export default Navbar;
