@@ -30,13 +30,16 @@ html{
   color: #3a3a3a;
 }
 .main-pg{
-  margin-top: 40%;
+  margin-top: 250px;
 }
 
 .active {
   color: var(#7393B3);
 }
-
+.logoTD {
+  display: flex;
+  justify-content: center;
+}
 .content-table {
   border-collapse: collapse;
   margin: 25px 0;
